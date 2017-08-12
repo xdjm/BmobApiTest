@@ -15,8 +15,7 @@ public interface RetrofitApi {
             "x-bmob-rest-api-key:cc261ab628d365f1788c9fbb5a0be2e1",
             "content-type:application/json"})
     @GET("/1/classes/{project}")
-    Call<ResponseBody> get
-    (@Path("project") String project);
+    Call<ResponseBody> get(@Path("project") String project);
 
     // https://api.bmob.cn/1/classes/TableName/objectId
     @Headers({"x-bmob-application-id:fc845d2c89dcdab10aad9b17d4805f79",
@@ -38,4 +37,11 @@ public interface RetrofitApi {
             "content-type:application/json"})
     @DELETE("/1/classes/Project/{id}")
     Call<ResponseBody> delete(@Path("id") String id);
+
+    //https://api.bmob.cn/1/classes/GameScore?where=%7B%22name%22:%22Lily%22%7D
+    @Headers({"x-bmob-application-id:fc845d2c89dcdab10aad9b17d4805f79",
+            "x-bmob-rest-api-key:cc261ab628d365f1788c9fbb5a0be2e1",
+            "content-type:application/json"})
+    @GET("/1/classes/{classes}")
+    Call<ResponseBody> query(@Path("classes")String classes,@Query("where")String where);
 }
